@@ -1,1 +1,9 @@
 <h1> HOME </h1>
+
+
+<%= simple_form_for @sender do |f| %>
+  <%= f.input :email, placeholder: "Enter your email"%>
+  <%= f.input :recipient, placeholder: "Enter the recipient's email" %>
+  <%= f.input :message, placeholder: "Write something to your recipient" %>
+  <%= f.button :submit %>
+<% end %>
