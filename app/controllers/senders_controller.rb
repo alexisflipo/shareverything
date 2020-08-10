@@ -9,7 +9,7 @@ class SendersController < ApplicationController
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver
       flash.now[:error] = nil
-  redirect_to root_path, notice: "Message sent successfully. A confirmation mail has been sent on your email"
+      redirect_to root_path, notice: "Message sent successfully. A confirmation has been sent on your email"
     else
       flash.now[:error] = 'Cannot send message'
       render :new
