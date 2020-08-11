@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_150405) do
+ActiveRecord::Schema.define(version: 2020_08_11_134706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "links", force: :cascade do |t|
-    t.string "random_code"
+  create_table "documents", force: :cascade do |t|
+    t.string "filename"
+    t.string "content_type"
+    t.binary "file_contents"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "url"
   end
 
 end
