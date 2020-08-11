@@ -5,10 +5,10 @@ class SendersController < ApplicationController
 
   def create
     @sender = Sender.new(sender_params)
-    raise
-    response = Cloudinary::Uploader.upload(@sender.file.path)
-    link = Link.new(random_code: response["public_id"])
-    if @sender.valid? && response["public_id"].present? && link.save!
+    if @sender.valid?
+      response = Cloudinary::Uploader.upload(@sender.file.path)
+      link = Link.new(random_code: response["public_id"])
+      link.save!
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver
       redirect_to root_path, notice: "Message and file sent successfully. A confirmation has been sent on your email"
