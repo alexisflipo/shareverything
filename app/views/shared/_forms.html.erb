@@ -1,0 +1,8 @@
+<%= simple_form_for @sender do |f| %>
+  <%= f.input :email, placeholder: "Enter your email"%>
+  <%= f.input :recipient, placeholder: "Enter the recipient's email" %>
+  <%= f.input :message, placeholder: "Write something to your recipient" %>
+  <%= f.input :username, placeholder: "Username" %>
+  <%= f.input :file, as: :file, input_html: {} %>
+  <%= f.button :submit, value: "Share files", class:"btn btn-primary" %>
+<% end %>
