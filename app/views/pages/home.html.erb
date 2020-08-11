@@ -6,5 +6,6 @@
   <%= f.input :recipient, placeholder: "Enter the recipient's email" %>
   <%= f.input :message, placeholder: "Write something to your recipient" %>
   <%= f.input :username, placeholder: "Username" %>
+  <%= f.input :file, as: :file, input_html: {} %>
   <%= f.button :submit, class:"btn btn-primary" %>
 <% end %>
