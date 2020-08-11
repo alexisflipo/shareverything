@@ -6,8 +6,11 @@ class SendersController < ApplicationController
   def create
     @sender = Sender.new(sender_params)
     if @sender.valid?
-      # link = Link.new(random_code: response["public_id"])
-      # link.save!
+
+      document = Document.new(filename: params[:sender][:file].original_filename, content_type: params[:sender][:file].content_type, file_contents: params[:sender][:file].read)
+      document.save!
+      document.update(url:"http://localhost:3000/documents/#{document.id}")
+      @sender.url = document.url
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver
       redirect_to root_path, notice: "Message and file sent successfully. A confirmation has been sent on your email"
