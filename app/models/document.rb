@@ -1,5 +1,7 @@
 class Document < ApplicationRecord
-
+  def to_param
+    [id, filename.parameterize, (1..9).to_a.sample].join("-")
+  end
 #   def initialize(params = {})
 #   file = params.delete(:file)
 #   super
