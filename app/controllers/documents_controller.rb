@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
   end
 
-  def update
+  def download
     @document = Document.find(params[:id])
     send_data(@document.file_contents,
             type: @document.content_type,
