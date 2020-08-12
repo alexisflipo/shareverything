@@ -8,8 +8,8 @@ class SendersController < ApplicationController
     if @sender.valid?
 
       document = Document.new(filename: params[:sender][:file].original_filename, content_type: params[:sender][:file].content_type, file_contents: params[:sender][:file].read)
+      document.generate_url
       document.save!
-      document.update(url:"http://localhost:3000/documents/#{document.to_param}")
       @sender.url = document.url
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver

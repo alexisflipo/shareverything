@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   def show
-    @document = Document.find(params[:id])
+    @document = Document.friendly.find(params[:id])
   end
 
   def update
