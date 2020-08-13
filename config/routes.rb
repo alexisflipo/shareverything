@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :senders, only: [:new, :create]
   resources :links, only: [:show, :create]
   resources :documents, only: [:show, :update]
+
+  require "sidekiq/web"
+    mount Sidekiq::Web => '/sidekiq'
 end
