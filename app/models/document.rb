@@ -1,5 +1,20 @@
 class Document < ApplicationRecord
+  require 'securerandom'
+  extend FriendlyId
+  friendly_id :url, use: :slugged
 
+  def generate_url
+    self.url = loop do
+      random_token = SecureRandom.urlsafe_base64(32, false)
+      break random_token unless Document.exists?(url: random_token)
+    end
+  end
+
+  def normalize_friendly_id(value)
+    value.to_s.parameterize(preserve_case: true)
+  end
+
+end
 #   def initialize(params = {})
 #   file = params.delete(:file)
 #   super
@@ -15,4 +30,4 @@ class Document < ApplicationRecord
 #     # Thanks to this article I just found for the tip: http://mattberther.com/2007/10/19/uploading-files-to-a-database-using-rails
 #     return File.basename(filename)
 #   end
-end
+
