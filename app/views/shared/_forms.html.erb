@@ -1,8 +1,23 @@
 <%= simple_form_for @sender do |f| %>
-  <%= f.input :email, placeholder: "Enter your email"%>
-  <%= f.input :recipient, placeholder: "Enter the recipient's email" %>
-  <%= f.input :message, placeholder: "Write something to your recipient" %>
-  <%= f.input :username, placeholder: "Username" %>
-  <%= f.input :file, as: :file, input_html: {} %>
-  <%= f.button :submit, value: "Share files", class:"btn btn-primary" %>
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-12 col-md-8 col-lg-7">
+    <%= f.input :email, placeholder: "Enter your email"%>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-7">
+    <%= f.input :recipient, placeholder: "Enter the recipient's email" %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-7">
+    <%= f.input :message, as: :text, placeholder: "Write something to your recipient" %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-7">
+    <%= f.input :username, placeholder: "Username" %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-7">
+    <%= f.input :file, as: :file, input_html: {} %>
+      </div>
+      <div class="form-button col-sm-12 col-md-8 col-lg-7">
+    <%= f.button :submit, value: "Share files", class:"btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
