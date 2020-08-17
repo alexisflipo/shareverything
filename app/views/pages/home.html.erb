@@ -1,4 +1,4 @@
-<h1> HOME </h1>
+<h1 class="text-center mt-5"> HOME </h1>
 <%= render 'shared/forms' %>
 <% Document.all.each do |document| %>
 <%= link_to "Docs", document_path(document) %>
