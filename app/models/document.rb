@@ -2,6 +2,8 @@ class Document < ApplicationRecord
   require 'securerandom'
   extend FriendlyId
   friendly_id :url, use: :slugged
+  has_one_attached :file
+
 
   def generate_url
     self.url = loop do
