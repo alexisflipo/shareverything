@@ -1,1 +1,10 @@
-<%= link_to "Télécharger", download_document_path(@document) %>
+<div class="container d-flex flex-column align-items-center">
+  <div class="mt-5">
+    <%= link_to download_document_path(@document), class:"back-button" do %>
+      <i class="fas fa-cloud-download-alt"> Téléchargez votre document</i>
+    <% end %>
+  </div>
+  <div class="mt-5">
+    <%= link_to "Home", root_path, class:"back-button" %>
+  </div>
+</div>
