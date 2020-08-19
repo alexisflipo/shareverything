@@ -6,11 +6,12 @@ class SendersController < ApplicationController
 
   def create
     @sender = Sender.new(sender_params)
-    @document = Document.new(document_params)
     if @sender.valid?
 
       # @document.file.attach(params[:file])
+      @document = Document.new
       @document.generate_url
+      @document.file.attach(params[:sender][:file])
       @document.save!
       @sender.url = @document.url
       SenderMailer.send_to_sender(@sender).deliver
@@ -26,11 +27,11 @@ class SendersController < ApplicationController
   private
 
   def sender_params
-    params.require(:sender).permit(:message, :email, :recipient, :username)
+    params.require(:sender).permit(:message, :email, :recipient, :username, :file)
 
   end
 
-  def document_params
-    params.require(:sender).permit(:file)
-  end
+  # def document_params
+  #   params.require(:sender).permit(:file)
+  # end
 end
