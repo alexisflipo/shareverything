@@ -3,6 +3,7 @@ class SuppressJob < ApplicationJob
 
   def perform(id)
     document = Document.find(id)
+    document.file.purge
     document.destroy
   end
 end
