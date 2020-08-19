@@ -6,12 +6,13 @@ class SendersController < ApplicationController
 
   def create
     @sender = Sender.new(sender_params)
+    @document = Document.new(document_params)
     if @sender.valid?
-      document = Document.new
-      document.file.attach(params[:file])
-      document.generate_url
-      document.save!
-      @sender.url = document.url
+
+      # @document.file.attach(params[:file])
+      @document.generate_url
+      @document.save!
+      @sender.url = @document.url
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver
       # SuppressJob.set(wait: 1.minute).perform_later(document.id)
@@ -25,10 +26,11 @@ class SendersController < ApplicationController
   private
 
   def sender_params
-    params.require(:sender).permit(:message, :email, :recipient, :username, :file)
+    params.require(:sender).permit(:message, :email, :recipient, :username)
+
   end
 
   def document_params
-    params.require(:document).permit(:file)
+    params.require(:sender).permit(:file)
   end
 end

@@ -24,9 +24,9 @@ google_dev:
 
 google:
   service: GCS
-  project: todo-pic
+  project: Shareverything2
   credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
-  bucket: todo-pic-pjbelo
+  bucket: shareverything-bucket
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
