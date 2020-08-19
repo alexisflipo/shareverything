@@ -16,7 +16,7 @@ class SendersController < ApplicationController
       @sender.url = @document.url
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver
-      # SuppressJob.set(wait: 1.minute).perform_later(document.id)
+      SuppressJob.set(wait: 1.minute).perform_later(@document.id)
       redirect_to root_path, notice: "Message and file sent successfully. A confirmation has been sent on your email"
     else
       flash.now[:error] = "Sorry, but your message has not been sent"
