@@ -32,7 +32,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-    config.active_storage.service = :local
+    config.active_storage.service = :google_dev
   # Store uploaded files on the local file system (see config/storage.yml for options).
 
   # Don't care if the mailer can't send.
