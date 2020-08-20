@@ -28,7 +28,8 @@ gem "google-cloud-storage", "~> 1.8", require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
+# Permits size limits on uploading
+gem 'file_validators', '~> 2.3'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
