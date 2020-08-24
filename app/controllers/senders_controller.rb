@@ -10,7 +10,6 @@ class SendersController < ApplicationController
 
       # @document.file.attach(params[:file])
       @document = Document.new
-      @document.generate_url
       @document.file.attach(params[:sender][:file])
       @document.save!
       @sender.url = @document.url

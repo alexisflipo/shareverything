@@ -1,21 +1,20 @@
 class Document < ApplicationRecord
   require 'securerandom'
-  extend FriendlyId
-  friendly_id :url, use: :slugged
   has_one_attached :file
+  before_save :generate_url
 
+private
 
   def generate_url
     self.url = loop do
-      random_token = SecureRandom.urlsafe_base64(32, false)
+      random_token = SecureRandom.urlsafe_base64(64, false)
       break random_token unless Document.exists?(url: random_token)
     end
   end
 
-  def normalize_friendly_id(value)
-    value.to_s.parameterize(preserve_case: true)
+  def to_param
+    url
   end
-
 end
 #   def initialize(params = {})
 #   file = params.delete(:file)
