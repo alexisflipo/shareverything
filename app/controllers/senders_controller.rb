@@ -17,7 +17,7 @@ class SendersController < ApplicationController
         SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
         redirect_root
       else
-        SuppressJob.set(wait: 3.days).perform_later(@document.id)
+        SuppressJob.perform_in(2.days, @document.id)
         redirect_root
       end
     else
