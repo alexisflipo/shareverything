@@ -17,7 +17,7 @@
     <%= f.input :file, as: :file %>
       </div>
       <div class="form-button col-sm-12 col-md-8 col-lg-7">
-        <%= f.input :days, as: :radio_buttons, collection: (2..4), wrapper: :vertical_collection_inline, label: "File available in days" %>
+        <%= f.input :days, as: :radio_buttons, collection: (2..4), wrapper: :vertical_collection_inline, label: "The link will be destroyed in (days)" %>
       </div>
       <%= f.invisible_captcha :phone_number %>
       <div class="form-button col-sm-12 col-md-8 col-lg-7">
