@@ -1,7 +1,7 @@
 class Sender
   include ActiveModel::Model
 
-  attr_accessor :email, :recipient, :message, :username, :url, :file
+  attr_accessor :email, :recipient, :message, :username, :url, :file, :days
 
   validates :email, presence: true, format: { with: /\A.+\@.+\.[a-z]{1,4}\z/}
   validates :recipient, presence: true, format: { with: /\A.+\@.+\.[a-z]{1,4}\z/}

@@ -15,8 +15,13 @@ class SendersController < ApplicationController
       @sender.url = @document.url
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver
+      if @sender.days.present?
+      SuppressJob.set(wait_until: (@sender.days.to_i).days.from_now).perform_later(@document.id)
+      redirect_root
+      else
       SuppressJob.set(wait_until: 2.days.from_now).perform_later(@document.id)
-      redirect_to root_path, notice: "Message and file sent successfully. A confirmation has been sent on your email"
+      redirect_root
+      end
     else
       flash.now[:error] = "Sorry, but your message has not been sent"
       render :new
@@ -26,10 +31,12 @@ class SendersController < ApplicationController
   private
 
   def sender_params
-    params.require(:sender).permit(:message, :email, :recipient, :username, :file)
-
+    params.require(:sender).permit(:message, :email, :recipient, :username, :file, :days)
   end
 
+  def redirect_root
+    redirect_to root_path, notice: "Message and file sent successfully. A confirmation has been sent on your email"
+  end
   # def document_params
   #   params.require(:sender).permit(:file)
   # end

@@ -33,6 +33,7 @@ gem 'file_validators', '~> 2.3'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'friendly_id', '~> 5.3'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
