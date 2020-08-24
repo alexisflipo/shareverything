@@ -14,10 +14,10 @@ class SendersController < ApplicationController
       SenderMailer.send_to_sender(@sender).deliver
       SenderMailer.send_to_recipient(@sender).deliver
       if @sender.days.present?
-        SuppressJob.set(wait: (@sender.days.to_i).days).perform_later(@document.id)
+        SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
         redirect_root
       else
-        SuppressJob.set(wait: 2.days).perform_later(@document.id)
+        SuppressJob.set(wait: 3.days).perform_later(@document.id)
         redirect_root
       end
     else
