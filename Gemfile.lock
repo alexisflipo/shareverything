@@ -131,6 +131,8 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    invisible_captcha (1.0.1)
+      rails (>= 4.2)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jwt (2.2.2)
@@ -295,6 +297,7 @@ DEPENDENCIES
   font-awesome-sass
   friendly_id (~> 5.3)
   google-cloud-storage (~> 1.8)
+  invisible_captcha
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
