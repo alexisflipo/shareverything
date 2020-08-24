@@ -38,6 +38,8 @@ gem 'friendly_id', '~> 5.3'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
+gem 'invisible_captcha'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

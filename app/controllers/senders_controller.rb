@@ -1,4 +1,6 @@
 class SendersController < ApplicationController
+  invisible_captcha only: [:create], honeypot: :phone_number
+
   def new
     @sender = Sender.new
     @document = Document.new
