@@ -4,13 +4,6 @@ class DocumentsController < ApplicationController
     @document = set_document
   end
 
-  def download
-    @document = set_document
-        send_data(@document.file_contents,
-            type: @document.content_type,
-            filename: @document.filename)
-  end
-
   private
 
   def set_document
