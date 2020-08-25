@@ -58,7 +58,7 @@ div, p {
 }
 
 .form-button input{
-  color:#61677C;
+  color: black;
   font-weight: bold;
   box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
   transition: all 0.2s ease-in-out;
@@ -74,7 +74,8 @@ div, p {
 
   &:hover {
     background-color: transparent;
-    color: black;
+    color: #37CDAF;
+    font-weight: bold;
     box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
   }
 
@@ -86,8 +87,8 @@ div, p {
 
 .form-button input[type="radio"]{
   &:focus {
-    border: 1px solid #158467;
-    background-color: #158467;
+
+    background-color: #37CDAF;
     box-shadow: none;
   }
 }
