@@ -3,6 +3,8 @@
 <% else %>
   <h1> Welcome to Shareverything</h1>
 <% end %>
-<p> Your message was sent to <%= @sender.recipient %> : </p>
+<p> Your file was sent to <%= @sender.recipient %> : </p>
+<% if @sender.message.present? %>
 <p>Your message : <%= @sender.message %></p>
+<% end %>
 <p> Thanks for using Shareverything</p>

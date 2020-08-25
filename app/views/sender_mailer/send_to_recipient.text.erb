@@ -1,6 +1,6 @@
 
 <h3> <%= @sender.email %> sent you some files </h3>
-<p> <%= @sender.message %></p>
+<%= @sender.message if @sender.message.present? %>
 <% if @sender.days.present? %>
   <p> From the reception of this email this file is available <%=@sender.days%> days on the following link.</p>
 <% else %>
