@@ -67,9 +67,11 @@
   </div>
   <div class="infos" style="padding: 2rem;">
     <h3> <%= @sender.email %> sent you some files </h3>
-    <div class="message" style="max-width: fit-content;background: white;padding: 1.5rem;margin: 1rem auto;">
-      <%= @sender.message if @sender.message.present? %>
-    </div>
+      <% if @sender.message.present? %>
+        <div class="message" style="max-width: fit-content;background: white;padding: 1.5rem;margin: 1rem auto;">
+          <%= @sender.message %>
+        </div>
+      <% end %>
     <% if @sender.days.present? %>
       <p> From the reception of this email this file is available <%=@sender.days%> days on the following link.</p>
     <% else %>
