@@ -76,10 +76,10 @@
       <p> From the reception of this email this file is available 2 days on the following link.</p>
     <% end %>
     <div class="m2" style="margin: 2rem;width: 100%;">
-      <a class="btn" href="https://shareverything.herokuapp.com/documents/&lt;%= @sender.url %&gt;" style="text-decoration: none;color: black;font-weight: 600;box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;transition: all 0.2s ease-in-out;cursor: pointer;border: 0;outline: 0;font-size: 16px;border-radius: 320px;padding: 16px;background-color: #EBECF0;text-shadow: 1px 1px 0 #FFF;margin: 0 auto;position: sticky;display: block;max-width: fit-content;">Download</a>
+      <a class="btn" href="https://shareverything.herokuapp.com/documents/<%= @sender.url %>" style="text-decoration: none;color: black;font-weight: 600;box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;transition: all 0.2s ease-in-out;cursor: pointer;border: 0;outline: 0;font-size: 16px;border-radius: 320px;padding: 16px;background-color: #EBECF0;text-shadow: 1px 1px 0 #FFF;margin: 0 auto;position: sticky;display: block;max-width: fit-content;">Download</a>
     </div>
     <p>Or click on the link below:</p>
-    <a href="https://shareverything.herokuapp.com/documents/&lt;%= @sender.url %&gt;" style="text-decoration: none;">https://shareverything.herokuapp.com/documents/<%=@sender.url%></a>
+    <a href="https://shareverything.herokuapp.com/documents/<%= @sender.url %>" style="text-decoration: none;">https://shareverything.herokuapp.com/documents/<%=@sender.url%></a>
     <p> Thanks for using Shareverything</p>
   </div>
 </div>
