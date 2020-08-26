@@ -1,9 +1,86 @@
-<h3> <%= @sender.email %> sent you some files </h3>
-<%= @sender.message if @sender.message.present? %>
-<% if @sender.days.present? %>
-  <p> From the reception of this email this file is available <%=@sender.days%> days on the following link.</p>
-<% else %>
-  <p> From the reception of this email this file is available 2 days on the following link.</p>
-<% end %>
-<a href="https://shareverything.herokuapp.com/documents/<%= @sender.url %>">https://shareverything.herokuapp.com/documents/<%=@sender.url%></a>
-<p> Thanks for using Shareverything</p>
+
+<style>
+  #logo {
+    width: 20rem;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .message {
+    max-width: fit-content;
+    background: white;
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .container {
+    width: 100%;
+    background-color: #EBECF0;
+    font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+  }
+
+  .infos {
+    padding: 2rem;
+  }
+
+  .banner {
+    max-height: 14rem;
+  }
+
+  .btn {
+    color: black;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: #EBECF0;
+    text-shadow: 1px 1px 0 #FFF;
+    margin: 0 auto;
+    position: sticky;
+    display: block;
+    max-width: fit-content;
+  }
+
+  .btn, a {
+    text-decoration: none;
+  }
+
+  .m2 {
+    margin: 2rem;
+    width: 100%;
+  }
+
+</style>
+
+<div class="container" style="width: 100%;background-color: #EBECF0;font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;">
+  <div class="banner" style="max-height: 14rem;">
+    <img id="logo" src="https://res.cloudinary.com/shareverything/image/upload/v1598427126/dont_suppress/shareverything_ah9hib.png" alt="shareverything's logo" style="width: 20rem;position: relative;margin: 0 auto;display: block;object-fit: cover;object-position: 50% 50%;">
+  </div>
+  <div class="infos" style="padding: 2rem;">
+    <h3> <%= @sender.email %> sent you some files </h3>
+    <div class="message" style="max-width: fit-content;background: white;padding: 1.5rem;margin: 1rem auto;">
+      <%= @sender.message if @sender.message.present? %>
+    </div>
+    <% if @sender.days.present? %>
+      <p> From the reception of this email this file is available <%=@sender.days%> days on the following link.</p>
+    <% else %>
+      <p> From the reception of this email this file is available 2 days on the following link.</p>
+    <% end %>
+    <div class="m2" style="margin: 2rem;width: 100%;">
+      <a class="btn" href="https://shareverything.herokuapp.com/documents/&lt;%= @sender.url %&gt;" style="text-decoration: none;color: black;font-weight: 600;box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;transition: all 0.2s ease-in-out;cursor: pointer;border: 0;outline: 0;font-size: 16px;border-radius: 320px;padding: 16px;background-color: #EBECF0;text-shadow: 1px 1px 0 #FFF;margin: 0 auto;position: sticky;display: block;max-width: fit-content;">Download</a>
+    </div>
+    <p>Or click on the link below:</p>
+    <a href="https://shareverything.herokuapp.com/documents/&lt;%= @sender.url %&gt;" style="text-decoration: none;">https://shareverything.herokuapp.com/documents/<%=@sender.url%></a>
+    <p> Thanks for using Shareverything</p>
+  </div>
+</div>
+
