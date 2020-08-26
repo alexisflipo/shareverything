@@ -84,9 +84,13 @@ div, p {
 }
 
 
-.form-button input[type="radio"]{
-  &:focus {
+.form-button .form-group input[type="radio"]{
+  &:hover {
     background-color: #31CAAB;
-    box-shadow: none;
+    color: #31CAAB;
+    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
   }
+}
+.active {
+  background-color: #31CAAB !important;
 }
