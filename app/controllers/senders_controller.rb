@@ -8,13 +8,12 @@ class SendersController < ApplicationController
 
   def create
     @sender = Sender.new(sender_params)
-    if @sender.valid?
+    if @sender.save
       @document = Document.new
       @document.file.attach(params[:sender][:file])
       @document.save!
       @sender.url = @document.url
-      SenderMailer.send_to_sender(@sender).deliver
-      SenderMailer.send_to_recipient(@sender).deliver
+      SendJob.perform_later(@sender)
       if @sender.days.present?
         SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
         redirect_root
