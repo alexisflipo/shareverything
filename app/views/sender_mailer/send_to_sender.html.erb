@@ -76,6 +76,8 @@
       <p>Your message : <%= @sender.message %></p>
     </div>
     <% end %>
+    <p> Your file is available on this link :</p>
+<a href="https://shareverything.herokuapp.com/documents/<%= @sender.url %>">https://shareverything.herokuapp.com/documents/<%=@sender.url%></a>
     <p> Thanks for using Shareverything</p>
   </div>
 </div>

@@ -7,4 +7,6 @@
 <% if @sender.message.present? %>
 <p>Your message : <%= @sender.message %></p>
 <% end %>
+<p> Your file is available on this link : </p>
+<a href="https://shareverything.herokuapp.com/documents/<%= @sender.url %>">https://shareverything.herokuapp.com/documents/<%=@sender.url%></a>
 <p> Thanks for using Shareverything</p>
