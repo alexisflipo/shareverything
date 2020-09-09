@@ -1,10 +1,12 @@
-class Sender
-  include ActiveModel::Model
+class Sender < ApplicationRecord
+  include ActiveModel::Validations
 
-  attr_accessor :email, :recipient, :message, :username, :url, :file, :days
+  has_many :documents
+  has_one_attached :file
 
   validates :email, presence: true, format: { with: /\A.+\@.+\.[a-z]{1,4}\z/}
   validates :recipient, presence: true, format: { with: /\A.+\@.+\.[a-z]{1,4}\z/}
   validates :file, presence: true, file_size: { less_than: 200.megabytes,
     message: "must not exceed 4Mo. Please choose a smaller file." }
+  validates_with MyValidator
 end
