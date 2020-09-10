@@ -13,7 +13,7 @@ class SendersController < ApplicationController
       @document.file.attach(params[:sender][:file])
       @document.save!
       @sender.url = @document.url
-      SendJob.perform_later(@sender)
+      SendJob.perform_now(@sender)
       if @sender.days.present?
         SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
         redirect_root
