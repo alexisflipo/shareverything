@@ -11,7 +11,7 @@ class SendersController < ApplicationController
     if @sender.save
       @document = Document.new
       @document.file.attach(document_params[:file])
-      @document.sender_id = @sender.id
+      @document.sender = @sender
 
       @document.save!
       @sender.url = @document.url
