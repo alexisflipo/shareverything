@@ -2,7 +2,7 @@ class Document < ApplicationRecord
   require 'securerandom'
   has_one_attached :file
   before_save :generate_url
-
+  belongs_to :sender, dependent: :destroy
 private
 
   def generate_url

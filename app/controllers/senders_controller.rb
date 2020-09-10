@@ -11,6 +11,7 @@ class SendersController < ApplicationController
     if @sender.save
       @document = Document.new
       @document.file.attach(params[:sender][:file])
+      @document.sender_id = @sender.id
       @document.save!
       @sender.url = @document.url
       SendJob.perform_now(@sender)
