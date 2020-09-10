@@ -6,5 +6,5 @@
 <% else %>
   <p> From the reception of this email this file is available 2 days on the following link.</p>
 <% end %>
-<a href="https://shareverything.herokuapp.com/documents/<%= @sender.url %>">https://shareverything.herokuapp.com/documents/<%=@sender.url%></a>
+<a href="https://shareverything.herokuapp.com/documents/<%= @sender.document.url %>">https://shareverything.herokuapp.com/documents/<%=@sender.document.url%></a>
 <p> Thanks for using Shareverything</p>

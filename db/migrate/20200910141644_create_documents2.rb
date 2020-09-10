@@ -1,6 +1,6 @@
 class CreateDocuments2 < ActiveRecord::Migration[6.0]
   def change
-    create_table :documents2s do |t|
+    create_table :documents do |t|
       t.string :email
       t.string :recipient
       t.text :message

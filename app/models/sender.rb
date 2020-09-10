@@ -1,7 +1,7 @@
 class Sender < ApplicationRecord
   include ActiveModel::Validations
 
-  has_many :documents
+  has_one :document
   has_one_attached :file
 
   validates :email, presence: true, format: { with: /\A.+\@.+\.[a-z]{1,4}\z/}

@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_141644) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "documents2s", force: :cascade do |t|
+  create_table "documents", force: :cascade do |t|
     t.string "email"
     t.string "recipient"
     t.text "message"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_141644) do
     t.integer "days"
     t.string "username"
     t.bigint "sender_id", null: false
-    t.index ["sender_id"], name: "index_documents2s_on_sender_id"
+    t.index ["sender_id"], name: "index_documents_on_sender_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -82,5 +82,5 @@ ActiveRecord::Schema.define(version: 2020_09_10_141644) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "documents2s", "senders"
+  add_foreign_key "documents", "senders"
 end

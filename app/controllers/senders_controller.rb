@@ -12,9 +12,8 @@ class SendersController < ApplicationController
       @document = Document.new
       @document.file.attach(document_params[:file])
       @document.sender = @sender
-
       @document.save!
-      @sender.url = @document.url
+
       SendJob.perform_later(@sender)
       if @sender.days.present?
         SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
