@@ -1,4 +1,4 @@
-<%= simple_form_for @sender do |f| %>
+<%= simple_form_for @sender, html: { multipart: true } do |f| %>
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-sm-12 col-md-8 col-lg-7">
@@ -14,7 +14,8 @@
     <%= f.input :username, placeholder: "Username" %>
       </div>
       <div class="col-sm-12 col-md-8 col-lg-7">
-    <%= f.input :file, as: :file %>
+        <%= label_tag 'document[file]', 'File' %>
+        <%= file_field_tag 'document[file]', required: true%>
       </div>
       <div class="form-button col-sm-12 col-md-8 col-lg-7">
         <%= f.input :days, as: :radio_buttons, collection: (2..4), wrapper: :vertical_collection_inline, label: "Link's activation duration (Days)" %>
