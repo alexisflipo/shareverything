@@ -8,5 +8,5 @@ class Sender < ApplicationRecord
   validates :recipient, presence: true, format: { with: /\A.+\@.+\.[a-z]{1,4}\z/}
   # validates :file, presence: true, file_size: { less_than: 200.megabytes,
     # message: "must not exceed 200Mo. Please choose a smaller file." }
-  validates_with MyValidator
+  validates_with MailUniqueness
 end
