@@ -10,7 +10,7 @@ class SendersController < ApplicationController
     @sender = Sender.new(sender_params)
     if @sender.save
       @document = Document.new
-      @document.file.attach(params[:sender][:file])
+      @document.file.attach(document_params)
       @document.save!
       @sender.url = @document.url
       SendJob.perform_now(@sender)
@@ -30,7 +30,12 @@ class SendersController < ApplicationController
   private
 
   def sender_params
-    params.require(:sender).permit(:message, :email, :recipient, :username, :file, :days)
+    params.require(:sender).permit(:message, :email, :recipient, :username, :days)
+  end
+
+
+  def document_params
+    params.require(:sender).permit(:file)
   end
 
   def redirect_root
