@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_135208) do
+ActiveRecord::Schema.define(version: 2020_09_10_141644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,14 +36,15 @@ ActiveRecord::Schema.define(version: 2020_09_10_135208) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "documents2s", force: :cascade do |t|
+    t.string "email"
+    t.string "recipient"
+    t.text "message"
     t.string "url"
-    t.string "slug"
-    t.bigint "sender_id"
-    t.index ["sender_id"], name: "index_documents_on_sender_id"
-    t.index ["slug"], name: "index_documents_on_slug", unique: true
+    t.integer "days"
+    t.string "username"
+    t.bigint "sender_id", null: false
+    t.index ["sender_id"], name: "index_documents2s_on_sender_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -81,5 +82,5 @@ ActiveRecord::Schema.define(version: 2020_09_10_135208) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "documents", "senders"
+  add_foreign_key "documents2s", "senders"
 end
