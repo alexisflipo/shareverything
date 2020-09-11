@@ -2,26 +2,27 @@
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-sm-12 col-md-8 col-lg-7">
-    <%= f.input :email, placeholder: "Enter your email"%>
+        <%= f.input :email, placeholder: "Enter your email"%>
       </div>
       <div class="col-sm-12 col-md-8 col-lg-7">
-    <%= f.input :recipient, placeholder: "Enter the recipient's email" %>
+        <%= f.input :recipient, placeholder: "Enter the recipient's email" %>
       </div>
       <div class="col-sm-12 col-md-8 col-lg-7">
-    <%= f.input :message, as: :text, placeholder: "Write something to your recipient" %>
+        <%= f.input :message, as: :text, placeholder: "Write something to your recipient" %>
       </div>
       <div class="col-sm-12 col-md-8 col-lg-7">
-    <%= f.input :username, placeholder: "Username" %>
+        <%= f.input :username, placeholder: "Username" %>
       </div>
       <div class="col-sm-12 col-md-8 col-lg-7">
-    <%= f.input :file, as: :file %>
+        <%= f.input :file, as: :file %>
       </div>
       <div class="form-button col-sm-12 col-md-8 col-lg-7">
         <%= f.input :days, as: :radio_buttons, collection: (2..4), wrapper: :vertical_collection_inline, label: "Link's activation duration (Days)" %>
       </div>
       <%= f.invisible_captcha :phone_number %>
       <div class="form-button col-sm-12 col-md-8 col-lg-7">
-    <%= f.submit "Share files", class:"mb-5"%>
+        <%= f.submit "Share files", class:"mb-5"%>
+      </div>
     </div>
   </div>
 <% end %>

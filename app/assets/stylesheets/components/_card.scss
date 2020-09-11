@@ -1,8 +1,68 @@
+.content {
+  display: flex;
+  flex-direction: column;
+
+  @include big-screen {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 .card-articles {
   display: flex;
-  max-width: 80%;
+  flex-direction: column;
+
+  @include big-screen {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .card-article {
-  font-size: 2rem;
+
+  margin-top: 2rem;
+
+  @include big-screen {
+    max-width: 45%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  p {
+    font-weight: 100;
+  }
+
+  .copyright {
+    position: relative;
+    top: -16px;
+    text-align: right;
+    left: -7px;
+    font-size: 0.5rem;
+  }
 }
+
+#nyt {
+  @include big-screen {
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+

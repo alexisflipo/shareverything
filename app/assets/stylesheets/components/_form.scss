@@ -4,6 +4,12 @@ $color-bg: #EBECF0;
 $color-shadow: #BABECC;
 $color-white: #FFF;
 
+form {
+  @include big-screen {
+    max-width: 40%;
+  }
+}
+
 .logo {
   height: auto;
   width: 100%;
