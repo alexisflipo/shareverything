@@ -1,6 +1,6 @@
 const nyt = document.getElementById("nyt");
 
- const callNytApi = () => {
+const callNytApi = () => {
 
    if (nyt) {
      fetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=dlhLwAV19TVntyHf796mfDOXhXA0xkJH")

@@ -10,10 +10,11 @@ class SendersController < ApplicationController
     @sender = Sender.new(sender_params)
     if @sender.save
       @document = Document.new
-      @document.file.attach(params[:sender][:file])
+      @document.file.attach(document_params[:file])
+      @document.sender = @sender
       @document.save!
-      @sender.url = @document.url
-      SendJob.perform_now(@sender)
+
+      SendJob.perform_later(@sender)
       if @sender.days.present?
         SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
         redirect_root
@@ -30,11 +31,14 @@ class SendersController < ApplicationController
   private
 
   def sender_params
-    params.require(:sender).permit(:message, :email, :recipient, :username, :file, :days)
+    params.require(:sender).permit(:message, :email, :recipient, :username, :days)
+  end
+
+  def document_params
+    params.require(:document).permit(:file)
   end
 
   def redirect_root
     redirect_to root_path, notice: "Message and file sent successfully. A confirmation has been sent on your email"
   end
-
 end
