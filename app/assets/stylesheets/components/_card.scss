@@ -59,6 +59,7 @@
 
 #nyt {
   @include big-screen {
+    margin-right: 2rem;
     h3 {
       text-align: center;
     }
