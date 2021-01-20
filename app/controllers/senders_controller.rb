@@ -7,25 +7,26 @@ class SendersController < ApplicationController
   end
 
   def create
-    @sender = Sender.new(sender_params)
-    if @sender.save
-      @document = Document.new
-      @document.file.attach(document_params[:file])
-      @document.sender = @sender
-      @document.save!
+    redirect_to error_path
+    # @sender = Sender.new(sender_params)
+    # if @sender.save
+    #   @document = Document.new
+    #   @document.file.attach(document_params[:file])
+    #   @document.sender = @sender
+    #   @document.save!
 
-      SendJob.perform_later(@sender)
-      if @sender.days.present?
-        SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
-        redirect_root
-      else
-        SuppressJob.set(wait: 3.days).perform_later(@document.id)
-        redirect_root
-      end
-    else
-      flash.now[:error] = "Sorry, but your message has not been sent"
-      render :new
-    end
+    #   SendJob.perform_later(@sender)
+    #   if @sender.days.present?
+    #     SuppressJob.set(wait: (@sender.days.to_i + 1).days).perform_later(@document.id)
+    #     redirect_root
+    #   else
+    #     SuppressJob.set(wait: 3.days).perform_later(@document.id)
+    #     redirect_root
+    #   end
+    # else
+    #   flash.now[:error] = "Sorry, but your message has not been sent"
+    #   render :new
+    # end
   end
 
   private
